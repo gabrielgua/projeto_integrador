@@ -1,0 +1,9 @@
+service\ComentarioService.class
+service\UsuarioService.class
+control\UsuarioCT.class
+model\Jogo.class
+control\ComentarioCT.class
+service\JogoService.class
+model\Usuario.class
+control\JogoCT.class
+model\Comentario.class

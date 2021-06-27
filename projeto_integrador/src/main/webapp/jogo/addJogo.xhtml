@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+	
+	<ui:define name="head">
+		<title>Loja</title>
+	</ui:define>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<ui:include src="/WEB-INF/include/menu.xhtml"/>	
+				
+				<div class="col-sm-12" style="margin-top: 25px; ">
+					<div class="col-sm-6" style="margin: auto; color: white; margin-top: 5px; padding: 20px; box-shadow: black 0px 1px 10px -4px; border-radius: 5px;"> 
+						<h:form>
+							<h4 class="font-weight-bold text-white">Cadastrar Jogo</h4>
+							
+							<h:outputLabel class="font-weight-bold" value="ID de Usuário" />
+							<h:outputText value="#{UsuarioCT.usuario.usuario_id}" styleClass="form-control text-white" style="background-color: #272A2E; border: none;"/><br/>
+											
+							<h:outputLabel class="font-weight-bold" value="Título" />
+							<h:inputText value="#{JogoCT.jogo.titulo}" required="true" styleClass="form-control text-white bg-dark" style="border: 1px solid #00FFC9;"/><br/>
+							
+							<h:outputLabel class="font-weight-bold" value="Gênero" />
+							<h:selectOneMenu value="#{JogoCT.jogo.genero}" required="true" styleClass="form-control text-white bg-dark" style="border: 1px solid #00FFC9;">
+								<f:selectItem itemValue="#{JogoCT.jogo.genero}"/>
+								<f:selectItem itemValue="RPG" itemLabel="RPG"/>
+								<f:selectItem itemValue="MOBA" itemLabel="MOBA"/>
+								<f:selectItem itemValue="FPS" itemLabel="FPS"/>
+								<f:selectItem itemValue="Luta" itemLabel="Luta"/>
+								<f:selectItem itemValue="Sobrevivência" itemLabel="Sobrevivência"/>
+							</h:selectOneMenu>
+							<br/>
+														
+							<h:messages autoUpdate="true" style="color: red; list-style: none; padding: 0px;"/>
+							<h:commandButton action="#{JogoCT.cadastrar(UsuarioCT.usuario)}" value="Enviar" styleClass="btn btn-primary" style="margin-bottom: 10px;"/>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

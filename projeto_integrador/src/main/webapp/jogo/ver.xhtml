@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+	
+	<ui:define name="head">
+		<title>#{JogoCT.jogo.titulo}</title>
+	</ui:define>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<ui:include src="/WEB-INF/include/menu.xhtml"/>
+				<div class="col-sm-12" style="margin: auto;" >
+					<div style="margin-top: 15px; box-shadow: black 0px 1px 10px -4px; padding: 25px; padding-left: 25px; border-radius: 8px; margin-bottom: -20px;"> 
+						<h1 class="font-weight-bold text-white">#{JogoCT.jogo.titulo}</h1>	
+						<div class="form-row col-sm-12 text-white" style="font-size: 15px; background-color: #272A2E; text-align: center; padding: 10px; border-radius: 25px; margin-right: 20px;">
+							<div class="col-sm-6 bg-dark form-row" style="text-align: center; border-radius: 15px; margin-left: 2px;">
+								
+								<div class="col bg-dark" style="padding-top: 6px; border-radius: 15px; margin-left: -5px;">
+									<span style="color: #00FFC9; margin-right: 5px;">Likes</span>
+									<span style="
+										background-color: #272A2E; 
+										font-weight: bold; 
+										padding-top: 3px; 
+										padding-left: 10px; 
+										padding-right: 10px; 
+										padding-bottom: 4px; 
+										
+										border-radius: 15px;">#{JogoCT.jogo.likes}</span>
+								</div>
+								<div class="col bg-dark" style="padding-top: 6px; border-radius: 15px; margin-left: -5px;">
+									<span style="color: #00FFC9; margin-right: 5px;">Avaliação</span>
+									<span style="
+										background-color: #272A2E; 
+										font-weight: bold; 
+										padding-top: 3px; 
+										padding-left: 10px; 
+										padding-right: 10px; 
+										padding-bottom: 4px; 
+										
+										border-radius: 15px;">#{JogoCT.jogo.avaliacao} / 5</span>
+								</div>
+								<div class="col bg-dark" style="padding-top: 6px; border-radius: 15px; margin-left: -5px;">
+									<span style="color: #00FFC9; margin-right: 5px;">Comentários</span>
+									<span style="
+										background-color: #272A2E; 
+										font-weight: bold; 
+										padding-top: 3px; 
+										padding-left: 10px; 
+										padding-right: 10px; 
+										padding-bottom: 4px; 
+										
+										border-radius: 15px;">#{JogoCT.jogo.comentarios.size()}</span>
+								</div>
+							</div>
+							<div class="col-sm-6 " style="text-align: right;">
+								<h:form>
+									<h:commandButton action="#{JogoCT.like(JogoCT.jogo.jogo_id)}" value="Like" styleClass="bg-dark btn" style="margin-right: 10px; color: #00FFC9; border: none; border-radius: 15px;"/>
+									<h:commandButton action="#" value="Avaliar" styleClass="bg-dark btn" style="margin-right: 10px; color: #00FFC9; border: none; border-radius: 15px;"/>
+									<h:commandButton action="#{ComentarioCT.novo()}" value="Comentar" styleClass="bg-dark btn" style="margin-right: -2px; color: #00FFC9; border: none; border-radius: 15px;"/>
+								</h:form>
+							</div>		
+						</div>	
+					</div>
+					<h:form>
+						<h:dataTable  style="
+								margin-top: 15px;
+								box-shadow: black 0px 1px 10px -4px;
+							" styleClass="table table-dark table-borderless table-striped" value="#{JogoCT.jogo.comentarios}" var="j">
+							<h:column>
+								<span style="background-color: #272A2E; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; margin-left: 8px; color: #00FFC9; margin-top: 10px;">#</span>
+								<span style="font-size: 18px; font-weight: bolder;">#{j.usuario.nome}</span>
+								<div style="margin-top: 5px;">
+									<span style="background-color: #272A2E; padding: 5px; padding-left: 11px; padding-right: 11px; padding-bottom: 8px; border-radius: 20px; font-size: 12px; margin-left: 8px;">#{j.usuario.email.toLowerCase()}</span>
+								</div>
+								
+								<div style="font-size: 14px; background-color: #272A2E; text-align: left; padding: 10px; padding-left: 15px; border-radius: 20px; margin-left: 8px; margin-top: 10px; margin-right: 8px; margin-bottom: 10px;">
+									<span class="bg-dark" style="
+										font-style: italic; 
+										padding: 5px; 
+										padding-left: 10px; 
+										padding-right: 10px; 
+										border-radius: 20px; 
+										font-size: 12px; 
+										color: #00FFC9; 
+										margin-left: -5px;
+										">Txt</span>
+									<span class="bg-dark" style="
+										padding: 5px; 
+										padding-left: 10px; 
+										padding-right:10px; 
+										border-radius: 20px; 
+										font-size: 12px; 
+										color: #00FFC9; 
+										margin-left: 2px;
+										margin-right: 2px;
+										
+										">#{j.data_postagem}</span>
+									<br/>
+									<div style="margin-top: 10px;">									
+										<span style="font-weight: bold; white-space: pre-wrap;">#{j.texto}</span>
+									</div>
+								</div>
+								
+							</h:column>
+						</h:dataTable>
+					</h:form>	
+				</div>
+			</div>	
+		</div>		
+	</ui:define>
+</ui:composition>
+</html>

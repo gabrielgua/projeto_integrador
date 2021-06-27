@@ -1,0 +1,45 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<div class="container-fluid col-lg-12" style="box-shadow: black 0px 15px 20px -22px; ">
+		<div class="row">
+			<nav class="navbar navbar-expand-lg navbar-collapse bg-dark navbar-dark" style="padding: 18px;">
+				<h1 style="background-color: #272A2E; padding: 10px; padding-left: 20px; padding-right: 20px; border-radius: 28px; font-size: 30px; margin-left: 8px; color: #00FFC9; margin-top: 10px;">#</h1>
+				<h1 class="navbar-brand" style="
+					margin-left: 15px; 
+					margin-right: 20px; 
+					margin-top: 5px;
+					font-size: 30px;
+				">#{UsuarioCT.usuario.nome}</h1>
+				
+				<ul class="navbar-nav mr-auto" style="margin-right: -10px;">
+				  	<li class="nav-item" style="margin-right: 10px; color: white; font-size: 23px;">|</li>
+				  	<li class="nav-item" style="margin-right: 10px;" >
+				  	<h:form>
+						<h:commandButton styleClass="nav-link bg-dark btn" style="color: #00FFC9; border: none;" value="Principal" action="#{UsuarioCT.index(UsuarioCT.usuario)}"/>
+					</h:form>
+				   	</li>
+					
+					<li class="nav-item" style="margin-right: 10px;" >
+						<h:form>
+							<h:commandButton styleClass="nav-link bg-dark btn" style="color: #00FFC9; border: none;" value="Conta" action="#{UsuarioCT.editar(UsuarioCT.usuario.usuario_id)}"/>
+						</h:form>
+				   	</li>
+				  
+				   	<li class="nav-item" style="margin-right: 10px;" >
+				  		<h:form>
+							<h:commandButton styleClass="nav-link bg-dark btn" style="color: #00FFC9; border: none;" value="Jogos" action="#{JogoCT.jogos(UsuarioCT.usuario.usuario_id)}"/>
+						</h:form>
+				   	</li>
+				  	
+			  	</ul>
+				    <span>
+				      	<h:link styleClass="nav-link" style="color: #FF2800" value="Sair" outcome="/usuario/index.xhtml" />
+			    	</span>
+			</nav>
+		</div>
+	</div>
+	
+</ui:composition>

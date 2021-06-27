@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+	
+	<ui:define name="head">
+		<title>Bem vindo!</title>
+	</ui:define>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<ui:include src="/WEB-INF/include/menu.xhtml"/>	
+				
+				<div class="col-sm-12" style="margin: auto;" >
+					<div style="margin-top: 15px; box-shadow: black 0px 1px 10px -4px; padding: 25px; padding-left: 25px; border-radius: 8px; margin-bottom: -20px;"> 
+						<h1 class="font-weight-bold text-white">BEM VINDO</h1>	
+					</div>
+					
+					<h:form>
+						<div class="form-row" style="font-size: 15px; background-color: #272A2E; text-align: center; box-shadow: black 0px 1px 10px -4px; padding: 20px; border-radius: 8px; margin-top: 8px;">
+							<div class="col-sm-3" style="margin-top: 7px; margin-left: -13px; margin-right: 13px">
+								<span class="form-group" style="margin: 10px; color: #00FFC9">Comentários</span>					
+								<span class="form-group" style="margin: 10px; color: #00FFC9">Avaliação</span>
+								<span class="form-group" style="margin: 10px; color: #00FFC9;">Likes</span>
+							</div>
+							<div class="col-sm-8">
+								<h:inputText value="Pesquisar..." disabled="true" styleClass="form-control text-white bg-dark" style="padding: 15px; border: none; border-radius: 5px;"/>
+							</div>	
+							<div class="col-sm-1">
+								<h:commandButton action="#" value="Buscar" styleClass="bg-dark btn" style="color: #00FFC9; border: none; margin: 1px; padding: 6px; padding-left: 10px; padding-right: 10px;"/>
+							</div>
+						</div>
+					</h:form>
+					<h:form>
+						<h:dataTable style="
+								margin-top: 15px;
+								box-shadow: black 0px 1px 10px -4px;  		
+								border-radius: 8px;					
+							" styleClass="table table-dark bg-dark table-borderless" value="#{JogoCT.jogos}" var="j">
+							<h:column style="border-radius: 8px; ">
+								<div class="form-row" style="margin-left: 7px; margin-right: 2px">
+									<div class="col-sm-10">
+										<span style="font-size: 30px; font-weight: bolder; margin: 10px; margin-left: -5px;">#{j.titulo}</span><br/>
+									</div>
+									<div class="col-sm-2" style="text-align: right">
+										<h:commandButton styleClass="btn" style="background-color: #272A2E; margin-right: -5px; color: #00FFC9; border: none; padding: 35px; padding-top: 10px; padding-bottom: 11px;" value="Ver" update='saida' action="#{JogoCT.ver(j.jogo_id)}"/>
+									</div>
+								</div>
+								
+								<div style="margin: 5px; margin-bottom: 10px">
+									<span style="background-color: #272A2E; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; color: #00FFC9;">#</span>
+									<span style="font-size: 18px; font-weight: bolder;">#{j.usuario.nome}</span>
+									<span style="font-size: 23px;  margin-left: 5px; margin-right: 5px ">|</span>
+									<span style="background-color: #272A2E; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; color: #00FFC9;">#{j.genero}</span>		
+								</div>
+								<div class="form-row" style="margin-left: 7px; margin-right: 2px">
+									<div class="col-sm-5" style="background-color: #272A2E; padding: 8px; border-radius: 20px; padding-top: 5px; padding-left: 15px; ">
+										
+										<span style="color: #00FFC9">Comentários</span>
+										<span class="bg-dark" style="box-shadow: black 0px 1px 10px -4px; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; color: #00FFC9; margin-right: 60px;">#{j.comentarios.size()}</span>
+										
+										<span style="color: #00FFC9">Avaliação</span>
+										<span class="bg-dark" style="box-shadow: black 0px 1px 10px -4px; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; color: #00FFC9; margin-right: 60px;">#{j.avaliacao}</span>
+										
+										<span style="color: #00FFC9">Likes</span>
+										<span class="bg-dark" style="box-shadow: black 0px 1px 10px -4px; padding: 5px; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-size: 12px; color: #00FFC9; margin-right: -55px;">#{j.likes}</span>
+									</div>
+									<div class="col-sm-7" style="margin-bottom: 20px"></div>
+									<span class="col-sm-12" style="padding: 1.5px; background-color: #272A2E; border-radius: 10px; margin-top: 15px; margin-bottom: -15px"></span>	
+								</div> 
+							</h:column>
+						</h:dataTable>
+					</h:form>	
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+	
+	<ui:define name="head">
+		<title>Jogos</title>
+	</ui:define>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<ui:include src="/WEB-INF/include/menu.xhtml"/>	
+				
+				<div class="col-sm-12" style="color: white; margin: auto;">
+					<div style="margin-top: 20px; padding: 10px; padding-left: 20px; box-shadow: black 0px 1px 10px -4px; border-radius: 8px;"> 
+						<div class="row">
+							<div class="col-sm-8">
+								<span class="font-weight-bold text-white" style="font-size: 30px;">SEUS JOGOS</span>
+							</div>
+							<div class="col-sm-4" style="text-align: right;">
+								<h:form>
+									<h:commandButton action="#{JogoCT.addJogoPagina()}" value="Adicionar Jogo" styleClass="bg-dark btn" style="color: #00FFC9; border: none; margin: 5px;"/>
+								</h:form>
+							</div>	
+						</div>	
+					</div>
+					<h:messages style="color: red; list-style: none; padding: 15px; margin-bottom: -10px;"/>
+					<h:form>
+						<h:dataTable style="
+								text-align: center;
+								margin-top: 15px;
+								box-shadow: black 0px 1px 10px -4px;
+								border-radius: 8px;
+							" styleClass="table table-dark table-borderless" value="#{UsuarioCT.usuario.jogos}" var="j">
+							<h:column>
+								<f:facet name="header">#</f:facet>
+								<span class="font-weight-bolder">#{j.jogo_id}</span>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Usuário</f:facet>
+								#{j.usuario.nome}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Título</f:facet>
+								#{j.titulo}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Gênero</f:facet>
+								#{j.genero}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Comentários</f:facet>
+								#{j.comentarios.size()}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Editar</f:facet>
+								<h:commandButton styleClass="btn" style="background-color: #272A2E; color: #00FFC9; border: none;" value="Editar" update='saida' action="#{JogoCT.editar(j.jogo_id)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Remover</f:facet>
+								<h:commandButton styleClass="btn" style="background-color: #272A2E; color: #FF2800; border: none;"  action="#{JogoCT.removerPagina(j.jogo_id)}" value="X" />
+							</h:column>
+						</h:dataTable>
+					</h:form>						
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
